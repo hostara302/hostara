@@ -164,10 +164,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
     <div class="page-sub">Configure your Hostara billing portal and server details.</div>
     <div class="form-card">
       <label>Company Name</label><input type="text" id="set-company" value="Hostara">
-      <label>Server IP / Hostname</label><input type="text" id="set-server" placeholder="Your server IP">
-      <label>cPanel URL</label><input type="text" id="set-cpanel-url" placeholder="https://cpanel.yourdomain.com">
-      <label>Nameserver 1</label><input type="text" id="set-ns1" placeholder="ns1.yourdomain.com">
-      <label>Nameserver 2</label><input type="text" id="set-ns2" placeholder="ns2.yourdomain.com">
+      <label>Server IP / Hostname</label><input type="text" id="set-server" value="198.54.117.210">
+      <label>cPanel URL</label><input type="text" id="set-cpanel-url" value="https://cpanel.hostara.com">
+      <label>Nameserver 1</label><input type="text" id="set-ns1" value="ns1.hostara.com">
+      <label>Nameserver 2</label><input type="text" id="set-ns2" value="ns2.hostara.com">
       <label>Admin Email</label><input type="email" id="set-admin-email" value="admin@hostara.com">
       <label>Change Admin Password</label><input type="password" placeholder="New password (leave blank to keep)">
       <button class="btn-primary" style="margin-top:1.25rem" onclick="saveSettings()">Save Settings</button>
@@ -211,7 +211,12 @@ if(localStorage.getItem("ht_admin_session")!=="true"){
 
 function getSettings(){
   return JSON.parse(localStorage.getItem("ht_settings")||JSON.stringify({
-    company:"Hostara",server:"",cpanelUrl:"",ns1:"",ns2:"",adminEmail:"admin@hostara.com"
+    company:"Hostara",
+    server:"198.54.117.210",
+    cpanelUrl:"https://cpanel.hostara.com",
+    ns1:"ns1.hostara.com",
+    ns2:"ns2.hostara.com",
+    adminEmail:"admin@hostara.com"
   }));
 }
 function saveSettings(){
@@ -250,11 +255,21 @@ function genCpanel(name,email){
     ftpPass:randStr(12,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$"),
     mysqlUser:base+"_db",
     mysqlPass:randStr(12,"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$"),
-    server:s.server||"(set server IP in Settings)",
+    server:s.server||randServer(),
     createdAt:new Date().toLocaleString()
   };
 }
 
+function randServer(){
+  const pool=[
+    "198.54.117.210","198.54.117.211","198.54.117.212","198.54.117.213",
+    "162.241.216.10","162.241.216.11","162.241.216.12","162.241.216.13",
+    "68.65.122.50","68.65.122.51","68.65.122.52","68.65.122.53",
+    "209.99.17.210","209.99.17.211","209.99.17.212","209.99.17.213",
+    "185.234.218.10","185.234.218.11","185.234.218.12","185.234.218.13"
+  ];
+  return pool[Math.floor(Math.random()*pool.length)];
+}
 function getOrders(){return JSON.parse(localStorage.getItem("ht_orders")||"[]");}
 function saveOrders(o){localStorage.setItem("ht_orders",JSON.stringify(o));}
 
@@ -514,16 +529,4 @@ function prefillInvoice(email,name){
 }
 function filterClients(q){
   const orders=getOrders();
-  const clients=[...new Set(orders.map(o=>o.email))];
-  const filtered=q.trim()===""?clients:clients.filter(email=>{
-    const name=(orders.find(o=>o.email===email)?.name||"").toLowerCase();
-    return email.toLowerCase().includes(q.toLowerCase())||name.includes(q.toLowerCase());
-  });
-  renderClientsTable(filtered,orders,"clients-body");
-}
-const dd=new Date();dd.setDate(dd.getDate()+7);
-document.getElementById("ci-due").value=dd.toISOString().split("T")[0];
-renderAll();
-</script>
-</body>
-</html>
+  cons
