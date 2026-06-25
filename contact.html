@@ -3,87 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us — CandyHosting</title>
+<title>Contact Us — Hostara</title>
 <style>
-:root{--primary:#ec4899;--primary-dark:#db2777;--primary-light:#f472b6;--bg:#0f0a0f;--card:#1c1018;--border:#3b1f33;--text:#f5f0f5;--muted:#a080a0;--success:#22c55e;}
+:root{--primary:#eab308;--primary-dark:#ca8a04;--bg:#0c0a00;--card:#1a1700;--border:#3a2e00;--text:#fefce8;--muted:#a39a5a;--success:#22c55e;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;}
-nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;border-bottom:1px solid var(--border);background:rgba(15,10,15,.95);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);}
-.logo{font-size:1.35rem;font-weight:800;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;border-bottom:1px solid var(--border);background:rgba(12,10,0,.95);position:sticky;top:0;z-index:50;}
+.logo{font-size:1.35rem;font-weight:800;color:var(--text);text-decoration:none;}
 .logo em{color:var(--primary);font-style:normal;}
-.nav-links{display:flex;gap:1.75rem;align-items:center;}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;margin-left:1.5rem;}
 .nav-links a:hover{color:var(--text);}
-.btn-login{background:var(--primary);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-size:.85rem;font-weight:600;}
-.btn-login:hover{background:var(--primary-dark)!important;}
 .page-wrap{max-width:900px;margin:3rem auto;padding:0 1.5rem 4rem;}
 .page-header{margin-bottom:2.5rem;text-align:center;}
 .page-header h1{font-size:2rem;font-weight:900;margin-bottom:.5rem;}
 .page-header p{color:var(--muted);font-size:.95rem;}
 .grid{display:grid;grid-template-columns:1fr 1.4fr;gap:1.5rem;}
 @media(max-width:680px){.grid{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;}
-h2{font-size:1.05rem;font-weight:700;margin-bottom:1.25rem;color:var(--primary-light);}
-.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
-.contact-icon{font-size:1.4rem;flex-shrink:0;margin-top:.1rem;}
-.contact-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin-bottom:.2rem;}
-.contact-value{font-size:.92rem;color:var(--text);}
-.contact-value a{color:var(--primary);text-decoration:none;}
-.contact-value a:hover{color:var(--primary-light);}
-.contact-note{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
-.divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem;}
+h2{font-size:1.05rem;font-weight:700;margin-bottom:1.25rem;color:var(--primary);}
 label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.35rem;margin-top:1rem;}
 label:first-of-type{margin-top:0;}
 input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:.65rem .9rem;border-radius:8px;font-size:.9rem;outline:none;transition:border-color .2s;}
 input:focus,select:focus,textarea:focus{border-color:var(--primary);}
-.btn-submit{width:100%;margin-top:1.25rem;padding:.85rem;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;}
-.btn-submit:hover{background:var(--primary-dark);}
+.btn-submit{width:100%;margin-top:1.25rem;padding:.85rem;background:var(--primary);color:#000;border:none;border-radius:10px;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.btn-submit:hover{background:var(--primary-dark);color:#fff;}
 .success-msg{display:none;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:var(--success);border-radius:10px;padding:1rem;text-align:center;font-size:.9rem;margin-top:1rem;}
 .hours-row{display:flex;justify-content:space-between;font-size:.85rem;padding:.4rem 0;border-bottom:1px solid var(--border);}
 .hours-row:last-child{border-bottom:none;}
 .hours-row span:first-child{color:var(--muted);}
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.8rem;}
-.footer-links{display:flex;justify-content:center;gap:1.75rem;margin-bottom:1rem;flex-wrap:wrap;}
+footer{border-top:1px solid var(--border);padding:1.5rem;text-align:center;color:var(--muted);font-size:.8rem;}
+.footer-links{display:flex;justify-content:center;gap:1.75rem;margin-bottom:.75rem;flex-wrap:wrap;}
 .footer-links a{color:var(--muted);text-decoration:none;}
 .footer-links a:hover{color:var(--text);}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="logo">🍬 Candy<em>Hosting</em></a>
-  <div class="nav-links">
-    <a href="index.html">Plans</a>
-    <a href="client.html">Client Area</a>
-    <a href="login.html" class="btn-login">Sign In</a>
-  </div>
+  <a href="index.html" class="logo">⭐ Hos<em>tara</em></a>
+  <div class="nav-links"><a href="index.html">Plans</a><a href="client.html">Client Area</a><a href="login.html">Sign In</a></div>
 </nav>
-
 <div class="page-wrap">
   <div class="page-header">
     <h1>Contact Us</h1>
     <p>Have a question or need help? We're here for you 24/7.</p>
   </div>
-
   <div class="grid">
-
-    <!-- LEFT: Contact info -->
     <div>
-      <div class="card" style="margin-bottom:1.5rem">
+      <div class="card">
         <h2>Get in Touch</h2>
-        <p style="font-size:.9rem;color:#c8b8c8;line-height:1.75">Use the form to send us a message and we'll get back to you as soon as possible. You can also open a support ticket from your <a href="client.html" style="color:var(--primary)">Client Area</a>.</p>
+        <p style="font-size:.9rem;color:#c9c08a;line-height:1.75">Use the form to send us a message and we'll get back to you as soon as possible. You can also open a support ticket from your <a href="client.html" style="color:var(--primary)">Client Area</a>.</p>
       </div>
-
       <div class="card">
         <h2>Support Hours</h2>
         <div class="hours-row"><span>Monday – Friday</span><span>24 hours</span></div>
         <div class="hours-row"><span>Saturday</span><span>24 hours</span></div>
         <div class="hours-row"><span>Sunday</span><span>24 hours</span></div>
-        <div class="divider"></div>
-        <p style="font-size:.82rem;color:var(--muted);line-height:1.6">We aim to respond to all tickets within <strong style="color:var(--text)">24 hours</strong>. Urgent or critical issues are typically addressed within a few hours.</p>
+        <div style="border-top:1px solid var(--border);margin-top:.75rem;padding-top:.75rem;font-size:.82rem;color:var(--muted);line-height:1.6">We aim to respond to all tickets within <strong style="color:var(--text)">24 hours</strong>. Urgent issues are typically addressed within a few hours.</div>
       </div>
     </div>
-
-    <!-- RIGHT: Contact form -->
     <div class="card">
       <h2>Send Us a Message</h2>
       <label>Your Name</label>
@@ -95,9 +72,9 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
         <option value="">Select a topic</option>
         <option>General Inquiry</option>
         <option>Technical Support</option>
-        <option>Billing & Payments</option>
+        <option>Billing &amp; Payments</option>
         <option>Refund Request</option>
-        <option>Sales & Pre-sales</option>
+        <option>Sales &amp; Pre-sales</option>
         <option>Abuse Report</option>
         <option>Other</option>
       </select>
@@ -109,10 +86,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
       <div class="success-msg" id="success-msg">✅ Message sent! We'll get back to you within 24 hours.</div>
       <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem;line-height:1.6">By submitting this form you agree to our <a href="privacy.html" style="color:var(--primary)">Privacy Policy</a>.</p>
     </div>
-
   </div>
 </div>
-
 <footer>
   <div class="footer-links">
     <a href="terms.html">Terms of Service</a>
@@ -120,25 +95,19 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:v
     <a href="refund.html">Refund Policy</a>
     <a href="contact.html">Contact Us</a>
   </div>
-  <p>&copy; 2026 CandyHosting &middot; Professional Web Hosting Services</p>
+  <p>&copy; 2026 Hostara &middot; Professional Web Hosting Services</p>
 </footer>
-
 <script>
-function submitContact() {
-  const name = document.getElementById('c-name').value.trim();
-  const email = document.getElementById('c-email').value.trim();
-  const subject = document.getElementById('c-subject').value;
-  const message = document.getElementById('c-message').value.trim();
-  if (!name || !email || !subject || !message) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-  document.getElementById('success-msg').style.display = 'block';
-  document.getElementById('c-name').value = '';
-  document.getElementById('c-email').value = '';
-  document.getElementById('c-subject').value = '';
-  document.getElementById('c-invoice').value = '';
-  document.getElementById('c-message').value = '';
+function submitContact(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const subject=document.getElementById('c-subject').value;
+  const message=document.getElementById('c-message').value.trim();
+  if(!name||!email||!subject||!message){alert('Please fill in all required fields.');return;}
+  document.getElementById('success-msg').style.display='block';
+  document.getElementById('c-name').value='';document.getElementById('c-email').value='';
+  document.getElementById('c-subject').value='';document.getElementById('c-invoice').value='';
+  document.getElementById('c-message').value='';
 }
 </script>
 </body>
