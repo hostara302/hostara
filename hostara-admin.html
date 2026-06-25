@@ -206,12 +206,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
 <script>
 // AUTH — Hostara uses ht_admin_session
 if(localStorage.getItem("ht_admin_session")!=="true"){
-  // Try to auto-migrate from gh_admin_session if user is coming from the shared login page
-  if(localStorage.getItem("gh_admin_session")==="true"){
-    localStorage.setItem("ht_admin_session","true");
-  } else {
-    location.href="login.html";
-  }
+  location.href="login.html";
 }
 
 function getSettings(){
