@@ -3,43 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign In — CandyHosting</title>
+<title>Sign In — Hostara</title>
 <style>
-  :root { --primary:#ec4899;--bg:#0f172a;--card:#1e293b;--border:#334155;--text:#f1f5f9;--muted:#94a3b8;--error:#ef4444; }
-  * { box-sizing:border-box;margin:0;padding:0; }
-  body { background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem; }
-  .logo { font-size:1.5rem;font-weight:800;margin-bottom:2rem;text-align:center; }
-  .logo span { color:var(--primary); }
-  .login-card { background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;width:100%;max-width:380px; }
-  h2 { font-size:1.3rem;font-weight:700;margin-bottom:0.4rem; }
-  .subtitle { color:var(--muted);font-size:0.85rem;margin-bottom:1.5rem; }
-  .tabs { display:flex;gap:0.5rem;margin-bottom:1.5rem; }
-  .tab { flex:1;padding:0.5rem;text-align:center;border-radius:8px;cursor:pointer;font-size:0.85rem;border:1px solid var(--border);color:var(--muted);background:var(--bg);transition:all .2s; }
-  .tab.active { background:var(--primary);color:#fff;border-color:var(--primary); }
-  label { display:block;font-size:0.8rem;color:var(--muted);margin-bottom:0.3rem;margin-top:0.9rem; }
-  input { width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:0.65rem 0.9rem;border-radius:8px;font-size:0.9rem;outline:none;transition:border-color .2s; }
-  input:focus { border-color:var(--primary); }
-  .btn { width:100%;margin-top:1.25rem;padding:0.8rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background .2s; }
-  .btn:hover { background:#db2777; }
-  .error-msg { color:var(--error);font-size:0.8rem;margin-top:0.75rem;display:none; }
-  .forgot { text-align:right;margin-top:0.4rem; }
-  .forgot a { font-size:0.78rem;color:var(--muted);text-decoration:none; }
-  .forgot a:hover { color:var(--text); }
-  .divider { text-align:center;color:var(--muted);font-size:0.78rem;margin-top:1.5rem; }
-  .back { display:block;text-align:center;margin-top:1.25rem;color:var(--muted);font-size:0.82rem;text-decoration:none; }
-  .back:hover { color:var(--text); }
+:root{--primary:#eab308;--primary-dark:#ca8a04;--bg:#0c0a00;--card:#1a1700;--border:#3a2e00;--text:#fefce8;--muted:#a39a5a;--error:#ef4444;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;}
+.logo{font-size:1.5rem;font-weight:800;margin-bottom:2rem;text-align:center;}
+.logo span{color:var(--primary);}
+.login-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;width:100%;max-width:380px;}
+h2{font-size:1.3rem;font-weight:700;margin-bottom:.4rem;}
+.subtitle{color:var(--muted);font-size:.85rem;margin-bottom:1.5rem;}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;}
+.tab{flex:1;padding:.5rem;text-align:center;border-radius:8px;cursor:pointer;font-size:.85rem;border:1px solid var(--border);color:var(--muted);background:var(--bg);transition:all .2s;}
+.tab.active{background:var(--primary);color:#000;border-color:var(--primary);font-weight:700;}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.3rem;margin-top:.9rem;}
+input{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:.65rem .9rem;border-radius:8px;font-size:.9rem;outline:none;transition:border-color .2s;}
+input:focus{border-color:var(--primary);}
+.btn{width:100%;margin-top:1.25rem;padding:.8rem;background:var(--primary);color:#000;border:none;border-radius:8px;font-size:.95rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.btn:hover{background:var(--primary-dark);color:#fff;}
+.error-msg{color:var(--error);font-size:.8rem;margin-top:.75rem;display:none;}
+.back{display:block;text-align:center;margin-top:1.25rem;color:var(--muted);font-size:.82rem;text-decoration:none;}
+.back:hover{color:var(--text);}
 </style>
 </head>
 <body>
-
-<div class="logo">🍬 Candy<span>Hosting</span></div>
-
+<div class="logo">⭐ Hos<span>tara</span></div>
 <div class="login-card">
   <div class="tabs">
-    <div class="tab active" onclick="setTab('client',this)" id="tab-client">Client Login</div>
-    <div class="tab" onclick="setTab('admin',this)" id="tab-admin">Admin</div>
+    <div class="tab active" onclick="setTab('client',this)">Client Login</div>
+    <div class="tab" onclick="setTab('admin',this)">Admin</div>
   </div>
-
   <div id="form-client">
     <h2>Welcome back</h2>
     <div class="subtitle">Sign in to manage your services and invoices.</div>
@@ -47,58 +40,50 @@
     <input type="email" id="client-email" placeholder="you@example.com">
     <label>Password</label>
     <input type="password" id="client-pass" placeholder="••••••••">
-    <div class="forgot"><a href="#">Forgot password?</a></div>
     <div class="error-msg" id="client-error">Invalid email or password.</div>
     <button class="btn" onclick="loginClient()">Sign In</button>
   </div>
-
   <div id="form-admin" style="display:none">
     <h2>Admin Access</h2>
-    <div class="subtitle">Restricted to CandyHosting staff only.</div>
+    <div class="subtitle">Restricted to Hostara staff only.</div>
     <label>Admin Email</label>
-    <input type="email" id="admin-email" placeholder="admin@candyhosting.com">
+    <input type="email" id="admin-email" placeholder="admin@hostara.com">
     <label>Admin Password</label>
     <input type="password" id="admin-pass" placeholder="••••••••">
     <div class="error-msg" id="admin-error">Invalid credentials.</div>
     <button class="btn" onclick="loginAdmin()">Admin Sign In</button>
   </div>
-
-  <div class="divider">─────── or ───────</div>
   <a href="index.html" class="back">← Back to plans</a>
 </div>
-
 <script>
-const ADMIN_EMAIL = 'admin@candyhosting.com';
-const ADMIN_PASS  = 'admin123';
-
-function setTab(tab, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+const ADMIN_EMAIL='admin@hostara.com';
+const ADMIN_PASS='admin123';
+function setTab(tab,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('form-client').style.display = tab === 'client' ? 'block' : 'none';
-  document.getElementById('form-admin').style.display  = tab === 'admin'  ? 'block' : 'none';
+  document.getElementById('form-client').style.display=tab==='client'?'block':'none';
+  document.getElementById('form-admin').style.display=tab==='admin'?'block':'none';
 }
-
-function loginClient() {
-  const email = document.getElementById('client-email').value.trim();
-  const pass  = document.getElementById('client-pass').value;
-  const orders = JSON.parse(localStorage.getItem('gh_orders') || '[]');
-  const found = orders.find(o => o.email.toLowerCase() === email.toLowerCase());
-  if (found || (email && pass.length >= 4)) {
-    localStorage.setItem('gh_client_session', JSON.stringify({ email, loggedIn: true }));
-    location.href = 'client.html';
+function loginClient(){
+  const email=document.getElementById('client-email').value.trim();
+  const pass=document.getElementById('client-pass').value;
+  const orders=JSON.parse(localStorage.getItem('ht_orders')||'[]');
+  const found=orders.find(o=>o.email.toLowerCase()===email.toLowerCase());
+  if(found||(email&&pass.length>=4)){
+    localStorage.setItem('ht_client_session',JSON.stringify({email,loggedIn:true}));
+    location.href='client.html';
   } else {
-    document.getElementById('client-error').style.display = 'block';
+    document.getElementById('client-error').style.display='block';
   }
 }
-
-function loginAdmin() {
-  const email = document.getElementById('admin-email').value.trim();
-  const pass  = document.getElementById('admin-pass').value;
-  if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
-    localStorage.setItem('gh_admin_session', 'true');
-    location.href = 'admin.html';
+function loginAdmin(){
+  const email=document.getElementById('admin-email').value.trim();
+  const pass=document.getElementById('admin-pass').value;
+  if(email===ADMIN_EMAIL&&pass===ADMIN_PASS){
+    localStorage.setItem('ht_admin_session','true');
+    location.href='admin.html';
   } else {
-    document.getElementById('admin-error').style.display = 'block';
+    document.getElementById('admin-error').style.display='block';
   }
 }
 </script>
