@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel &mdash; Hostara</title>
+<title>Admin Panel — Hostara</title>
 <style>
 :root{--primary:#eab308;--primary-dark:#ca8a04;--bg:#0c0a00;--card:#1a1700;--card2:#0a0800;--border:#3a2e00;--text:#fefce8;--muted:#a39a5a;--success:#22c55e;--warning:#f97316;--error:#ef4444;--info:#38bdf8;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -91,16 +91,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
   <div class="nav-group">Settings</div>
   <div class="nav-item" onclick="showSection('settings',this)">⚙️ Settings</div>
   <div class="sidebar-footer">
-    <div style="padding:.5rem .75rem;font-size:.8rem;color:var(--muted)">👤 Admin · hostara</div>
+    <div style="padding:.5rem .75rem;font-size:.8rem;color:var(--muted)">👤 Admin · Hostara</div>
     <div class="logout-btn" onclick="logout()">🚪 Sign Out</div>
   </div>
 </div>
 
 <div class="main">
-  <!-- DASHBOARD -->
   <div class="section active" id="sec-dashboard">
     <div class="page-title">Admin Dashboard</div>
-    <div class="page-sub">Overview of all clients, services and revenue.</div>
+    <div class="page-sub">Hostara — overview of all clients, services and revenue.</div>
     <div class="stat-grid">
       <div class="stat-card"><div class="label">Total Clients</div><div class="value" id="stat-clients">0</div><div class="trend">registered</div></div>
       <div class="stat-card"><div class="label">Total Invoices</div><div class="value" id="stat-inv">0</div><div class="trend">all time</div></div>
@@ -113,26 +112,23 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
     </div>
   </div>
 
-  <!-- CLIENTS -->
   <div class="section" id="sec-clients">
     <div class="page-title">Clients</div>
     <div class="page-sub">All registered clients with their server details.</div>
     <div style="margin-bottom:1rem">
       <input id="client-search" type="text" placeholder="🔍 Search by name or email..." oninput="filterClients(this.value)"
-        style="width:100%;max-width:400px;padding:.6rem 1rem;background:#1a1700;border:1px solid #3a2e00;border-radius:8px;color:#fefce8;font-size:.9rem;outline:none;transition:border .2s"
+        style="width:100%;max-width:400px;padding:.6rem 1rem;background:#1a1700;border:1px solid #3a2e00;border-radius:8px;color:#fefce8;font-size:.9rem;outline:none;"
         onfocus="this.style.borderColor='#eab308'" onblur="this.style.borderColor='#3a2e00'">
     </div>
     <div class="table-card"><div id="clients-body"></div></div>
   </div>
 
-  <!-- INVOICES -->
   <div class="section" id="sec-invoices">
     <div class="page-title">All Invoices</div>
     <div class="page-sub">Mark invoices paid to auto-generate server credentials &amp; welcome email.</div>
     <div class="table-card"><div id="invoices-body"></div></div>
   </div>
 
-  <!-- CREATE INVOICE -->
   <div class="section" id="sec-create-invoice">
     <div class="page-title">Create Invoice</div>
     <div class="page-sub">Manually create an invoice for any client.</div>
@@ -143,18 +139,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
       </div>
       <label>Plan / Service</label>
       <select id="ci-plan">
-        <option>Stellar - 1 Month</option>
-        <option>Stellar - 3 Months</option>
-        <option>Stellar - 6 Months</option>
-        <option>Stellar - 1 Year</option>
-        <option>Stellar Plus - 1 Month</option>
-        <option>Stellar Plus - 3 Months</option>
-        <option>Stellar Plus - 6 Months</option>
-        <option>Stellar Plus - 1 Year</option>
-        <option>Stellar Business - 1 Month</option>
-        <option>Stellar Business - 3 Months</option>
-        <option>Stellar Business - 6 Months</option>
-        <option>Stellar Business - 1 Year</option>
+        <option>Stellar - 1 Month</option><option>Stellar - 3 Months</option>
+        <option>Stellar - 6 Months</option><option>Stellar - 1 Year</option>
+        <option>Stellar Plus - 1 Month</option><option>Stellar Plus - 3 Months</option>
+        <option>Stellar Plus - 6 Months</option><option>Stellar Plus - 1 Year</option>
+        <option>Stellar Business - 1 Month</option><option>Stellar Business - 3 Months</option>
+        <option>Stellar Business - 6 Months</option><option>Stellar Business - 1 Year</option>
       </select>
       <div class="form-grid">
         <div><label>Amount (USD)</label><input type="number" id="ci-amount" placeholder="15.00" min="0" step="0.01"></div>
@@ -169,16 +159,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
     </div>
   </div>
 
-  <!-- SETTINGS -->
   <div class="section" id="sec-settings">
     <div class="page-title">Settings</div>
-    <div class="page-sub">Configure your billing portal and server details.</div>
+    <div class="page-sub">Configure your Hostara billing portal and server details.</div>
     <div class="form-card">
       <label>Company Name</label><input type="text" id="set-company" value="Hostara">
-      <label>Server IP / Hostname</label><input type="text" id="set-server" value="" placeholder="Your server IP">
-      <label>cPanel URL</label><input type="text" id="set-cpanel-url" value="" placeholder="https://cpanel.yourdomain.com">
-      <label>Nameserver 1</label><input type="text" id="set-ns1" value="" placeholder="ns1.yourdomain.com">
-      <label>Nameserver 2</label><input type="text" id="set-ns2" value="" placeholder="ns2.yourdomain.com">
+      <label>Server IP / Hostname</label><input type="text" id="set-server" placeholder="Your server IP">
+      <label>cPanel URL</label><input type="text" id="set-cpanel-url" placeholder="https://cpanel.yourdomain.com">
+      <label>Nameserver 1</label><input type="text" id="set-ns1" placeholder="ns1.yourdomain.com">
+      <label>Nameserver 2</label><input type="text" id="set-ns2" placeholder="ns2.yourdomain.com">
       <label>Admin Email</label><input type="email" id="set-admin-email" value="admin@hostara.com">
       <label>Change Admin Password</label><input type="password" placeholder="New password (leave blank to keep)">
       <button class="btn-primary" style="margin-top:1.25rem" onclick="saveSettings()">Save Settings</button>
@@ -186,7 +175,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-backdrop" id="main-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -196,11 +184,9 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
       <button class="mtab" onclick="switchTab('cpanel',this)">🖥️ Server Details</button>
       <button class="mtab" onclick="switchTab('email',this)">📩 Welcome Email</button>
     </div>
-    <div id="tab-invoice">
-      <div class="invoice-preview" id="inv-preview-content"></div>
-    </div>
+    <div id="tab-invoice"><div class="invoice-preview" id="inv-preview-content"></div></div>
     <div id="tab-cpanel" style="display:none">
-      <div style="margin-bottom:1rem;font-size:.85rem;color:var(--muted)">Auto-generated server credentials for this client. Share these via the Welcome Email tab.</div>
+      <div style="margin-bottom:1rem;font-size:.85rem;color:var(--muted)">Auto-generated server credentials. Share via the Welcome Email tab.</div>
       <div class="cpanel-box" id="cpanel-details-box"></div>
     </div>
     <div id="tab-email" style="display:none">
@@ -218,7 +204,15 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary);}
 </div>
 
 <script>
-if(localStorage.getItem("ht_admin_session")!=="true"){location.href="login.html";}
+// AUTH — Hostara uses ht_admin_session
+if(localStorage.getItem("ht_admin_session")!=="true"){
+  // Try to auto-migrate from gh_admin_session if user is coming from the shared login page
+  if(localStorage.getItem("gh_admin_session")==="true"){
+    localStorage.setItem("ht_admin_session","true");
+  } else {
+    location.href="login.html";
+  }
+}
 
 function getSettings(){
   return JSON.parse(localStorage.getItem("ht_settings")||JSON.stringify({
@@ -295,7 +289,7 @@ function renderAll(){
 
 function badge(s){
   const m={["Pending Payment"]:"badge-pending",Paid:"badge-paid",Cancelled:"badge-cancelled"};
-  return `<span class="badge ${m[s]||"badge-cancelled"}">${s}</span>`;
+  return`<span class="badge ${m[s]||"badge-cancelled"}">${s}</span>`;
 }
 
 function renderInvTable(orders,id,short){
@@ -307,10 +301,10 @@ function renderInvTable(orders,id,short){
       const cp=o.cpanel;
       const cpCell=cp
         ?`<div style="font-size:.72rem;color:var(--info);font-family:monospace">🖥️ ${cp.username}<br><span style="color:var(--warning);font-size:.68rem">🔒 Credentials in email</span></div>`
-        :`<span style="color:var(--muted);font-size:.75rem">&mdash;</span>`;
-      return `<tr>
+        :`<span style="color:var(--muted);font-size:.75rem">—</span>`;
+      return`<tr>
         <td style="font-weight:600">${o.id}</td>
-        <td>${o.name||"&mdash;"}<br><small style="color:var(--muted)">${o.email}</small></td>
+        <td>${o.name||"—"}<br><small style="color:var(--muted)">${o.email}</small></td>
         <td style="font-size:.8rem">${o.plan}</td>
         <td>$${o.amount}</td>
         <td>${badge(o.status)}</td>
@@ -320,8 +314,7 @@ function renderInvTable(orders,id,short){
           ${o.status==="Paid"?`<button class="btn-sm blue" onclick="showEmailModal('${o.id}')">📩 Email</button>`:""}
           <button class="btn-sm" onclick="viewInv('${o.id}')">👁 View</button>
           <button class="btn-sm red" onclick="cancelInv('${o.id}')">Cancel</button>
-        </td>
-      </tr>`;
+        </td></tr>`;
     }).join("")+"</tbody></table>";
 }
 
@@ -344,8 +337,8 @@ function renderClientsTable(clients,orders,id){
         <div class="cp-row"><span class="cp-label">DB Pass</span><span class="cp-val" style="color:var(--warning);font-size:.72rem">🔒 Sent to email</span></div>
         <div class="cp-row"><span class="cp-label">Server IP</span><span class="cp-val">${cp.server}</span></div>
       </div>`:`<span style="color:var(--muted);font-size:.75rem">No active service yet</span>`;
-      return `<tr>
-        <td><strong>${co[0]?.name||"&mdash;"}</strong><br><small style="color:var(--muted)">${email}</small></td>
+      return`<tr>
+        <td><strong>${co[0]?.name||"—"}</strong><br><small style="color:var(--muted)">${email}</small></td>
         <td>${co.length}</td><td>$${spent.toFixed(2)}</td>
         <td>${cpCell}</td>
         <td><button class="btn-sm" onclick="prefillInvoice('${email}','${co[0]?.name||""}')">+ Invoice</button>
@@ -355,12 +348,9 @@ function renderClientsTable(clients,orders,id){
 }
 
 function markPaid(id){
-  const orders=getOrders();
-  const o=orders.find(x=>x.id===id);if(!o)return;
-  o.status="Paid";
-  if(!o.cpanel){o.cpanel=genCpanel(o.name,o.email);}
-  saveOrders(orders);renderAll();
-  showEmailModal(id);
+  const orders=getOrders();const o=orders.find(x=>x.id===id);if(!o)return;
+  o.status="Paid";if(!o.cpanel){o.cpanel=genCpanel(o.name,o.email);}
+  saveOrders(orders);renderAll();showEmailModal(id);
 }
 function cancelInv(id){
   if(!confirm("Cancel this invoice?"))return;
@@ -374,9 +364,7 @@ function viewInv(id){
   _currentInvId=id;
   document.getElementById("modal-title").textContent="Invoice "+o.id;
   document.getElementById("modal-tabs").style.display=o.cpanel?"flex":"none";
-  buildInvoiceHTML(o);
-  if(o.cpanel)buildCpanelHTML(o);
-  if(o.cpanel)buildEmailHTML(o);
+  buildInvoiceHTML(o);if(o.cpanel){buildCpanelHTML(o);buildEmailHTML(o);}
   switchTab("invoice",document.querySelector(".mtab"));
   document.getElementById("main-modal").classList.add("open");
 }
@@ -405,14 +393,13 @@ function buildInvoiceHTML(o){
     <div class="inv-row"><span style="color:var(--muted)">Invoice #</span><span style="font-weight:700">${o.id}</span></div>
     <div class="inv-row"><span style="color:var(--muted)">Date</span><span>${o.date}</span></div>
     <div class="inv-row"><span style="color:var(--muted)">Due Date</span><span>${o.due||"Upon receipt"}</span></div>
-    <div class="inv-row"><span style="color:var(--muted)">Bill To</span><span>${o.name} &middot; ${o.email}</span></div>
+    <div class="inv-row"><span style="color:var(--muted)">Bill To</span><span>${o.name} · ${o.email}</span></div>
     <hr style="border:none;border-top:1px solid var(--border);margin:.75rem 0">
     <div class="inv-row"><span>${o.plan}</span><span>$${o.amount}</span></div>
     ${o.notes?`<div style="color:var(--muted);font-size:.78rem;margin-top:.5rem">Note: ${o.notes}</div>`:""}
     <div class="inv-total"><span>Total Due</span><span>$${parseFloat(o.amount).toFixed(2)}</span></div>
     <div style="margin-top:1rem;font-size:.75rem;color:var(--muted);text-align:center">Status: <strong style="color:${o.status==="Paid"?"var(--success)":"var(--warning)"}">${o.status}</strong></div>`;
 }
-
 function buildCpanelHTML(o){
   const s=getSettings();const cp=o.cpanel;
   const serverIP=cp.server||s.server||"(not set)";
@@ -435,13 +422,13 @@ function buildCpanelHTML(o){
     <div class="cp-row" style="margin-top:.5rem"><span class="cp-label">Server IP</span><span class="cp-val">${serverIP}</span></div>
     <div class="cp-row"><span class="cp-label">Generated</span><span class="cp-val" style="color:var(--muted)">${cp.createdAt}</span></div>`;
 }
-
 function buildEmailHTML(o){
   const s=getSettings();const cp=o.cpanel;
   const company=s.company||"Hostara";
   const serverIP=cp.server||s.server||"(see Settings)";
   const adminEmail=s.adminEmail||"admin@hostara.com";
-  const email=`Subject: Your ${company} Account is Active — Welcome!
+  document.getElementById("email-template-box").textContent=
+`Subject: Your ${company} Account is Active — Welcome!
 
 Dear ${o.name},
 
@@ -493,9 +480,7 @@ Thank you for trusting ${company}!
 Best regards,
 ${company} Support Team
 ${adminEmail}`;
-  document.getElementById("email-template-box").textContent=email;
 }
-
 function copyEmail(){
   const text=document.getElementById("email-template-box").textContent;
   navigator.clipboard.writeText(text).then(()=>{
@@ -504,7 +489,6 @@ function copyEmail(){
     setTimeout(()=>{btn.textContent="📋 Copy Email";btn.classList.remove("copied");},2500);
   });
 }
-
 function createInvoice(){
   const name=document.getElementById("ci-name").value.trim();
   const email=document.getElementById("ci-email").value.trim();
@@ -523,7 +507,6 @@ function createInvoice(){
 }
 function previewInvoice(){
   const fake={id:"INV-PREVIEW",name:document.getElementById("ci-name").value||"Client Name",email:document.getElementById("ci-email").value||"client@email.com",plan:document.getElementById("ci-plan").value,amount:document.getElementById("ci-amount").value||"0",date:new Date().toLocaleDateString(),due:document.getElementById("ci-due").value||"Upon receipt",status:"Pending Payment"};
-  _currentInvId=null;
   document.getElementById("modal-title").textContent="Invoice Preview";
   document.getElementById("modal-tabs").style.display="none";
   buildInvoiceHTML(fake);switchTab("invoice",null);
@@ -532,13 +515,8 @@ function previewInvoice(){
 function prefillInvoice(email,name){
   document.getElementById("ci-email").value=email;
   document.getElementById("ci-name").value=name;
-  showSection("create-invoice",document.querySelector("[onclick*=create-invoice]"));
+  showSection("create-invoice",document.querySelector("[onclick*='create-invoice']"));
 }
-
-const dd=new Date();dd.setDate(dd.getDate()+7);
-document.getElementById("ci-due").value=dd.toISOString().split("T")[0];
-renderAll();
-
 function filterClients(q){
   const orders=getOrders();
   const clients=[...new Set(orders.map(o=>o.email))];
@@ -548,6 +526,9 @@ function filterClients(q){
   });
   renderClientsTable(filtered,orders,"clients-body");
 }
+const dd=new Date();dd.setDate(dd.getDate()+7);
+document.getElementById("ci-due").value=dd.toISOString().split("T")[0];
+renderAll();
 </script>
 </body>
 </html>
