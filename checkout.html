@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout &mdash; CandyHosting</title>
+<style>
+:root{--primary:#ec4899;--primary-dark:#db2777;--bg:#0f0a0f;--card:#1c1018;--border:#3b1f33;--text:#f5f0f5;--muted:#a080a0;--success:#22c55e;--accent:#f9a8d4;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);}
+.logo{font-size:1.2rem;font-weight:800;color:var(--text);text-decoration:none;}
+.logo em{color:var(--primary);font-style:normal;}
+.back-link{color:var(--muted);text-decoration:none;font-size:.88rem;}
+.back-link:hover{color:var(--text);}
+.checkout-wrap{max-width:960px;margin:2.5rem auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr 380px;gap:2rem;}
+@media(max-width:768px){.checkout-wrap{grid-template-columns:1fr}}
+h2{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;}
+label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:.35rem;margin-top:1rem;}
+label:first-of-type{margin-top:0;}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:.65rem .9rem;border-radius:8px;font-size:.9rem;outline:none;transition:border-color .2s;}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.section-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:1.5rem 0 .75rem;border-top:1px solid var(--border);padding-top:1.25rem;}
+.pay-section-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin:1.5rem 0 .75rem;border-top:1px solid var(--border);padding-top:1.25rem;}
+.pay-logos{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.pay-logo{background:#fff;border-radius:6px;padding:.35rem .7rem;display:flex;align-items:center;justify-content:center;height:36px;}
+.pay-logo img{height:22px;width:auto;display:block;}
+.pay-note{font-size:.8rem;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;line-height:1.7;}
+.pay-note strong{color:var(--text);}
+.btn-pay{display:block;width:100%;margin-top:1.5rem;padding:.9rem;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s;text-align:center;text-decoration:none;}
+.btn-pay:hover{background:var(--primary-dark);}
+.btn-submit{width:100%;margin-top:1.5rem;padding:.85rem;background:var(--primary);color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.btn-submit:hover{background:var(--primary-dark);}
+.summary-plan{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.summary-plan .name{font-weight:700;font-size:1rem;}
+.summary-plan .features{font-size:.78rem;color:var(--muted);margin-top:.25rem;}
+.summary-plan .price{font-size:1.4rem;font-weight:800;}
+.summary-line{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);padding:.45rem 0;border-bottom:1px solid var(--border);}
+.summary-total{display:flex;justify-content:space-between;font-weight:700;font-size:1rem;margin-top:1rem;padding-top:1rem;border-top:2px solid var(--border);}
+.badge-green{background:#14532d;color:var(--success);font-size:.72rem;padding:.2rem .5rem;border-radius:4px;}
+.trust-row{display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem;}
+.trust-item{font-size:.78rem;color:var(--muted);}
+#success-screen{display:none;text-align:center;padding:3rem 1rem;}
+#success-screen .check{font-size:4rem;margin-bottom:1rem;}
+#success-screen h2{font-size:1.8rem;margin-bottom:.75rem;}
+#success-screen p{color:var(--muted);margin-bottom:1.5rem;}
+#success-screen a{color:var(--primary);text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">🍬 Candy<em>Hosting</em></a>
+  <a href="index.html" class="back-link">&larr; Back to plans</a>
+</nav>
+<div id="checkout-screen">
+<div class="checkout-wrap">
+  <!-- LEFT: FORM -->
+  <div>
+    <h2>Complete your order</h2>
+    <div class="card">
+      <label>Full Name</label>
+      <input type="text" id="fname" placeholder="John Doe">
+      <label>Email Address</label>
+      <input type="email" id="femail" placeholder="john@example.com">
+      <div class="row2">
+        <div><label>Phone (optional)</label><input type="tel" id="fphone" placeholder="+1 555 0000"></div>
+        <div><label>Country</label>
+          <select id="fcountry">
+            <option value="">Select country</option>
+            <option>United States</option><option>United Kingdom</option><option>Canada</option>
+            <option>Australia</option><option>Pakistan</option><option>India</option>
+            <option>Germany</option><option>France</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <!-- PAYMENT SECTION -->
+      <div class="pay-section-title">Payment Method</div>
+      <div class="pay-logos">
+        <!-- PayPal -->
+        <div class="pay-logo">
+          <svg width="70" height="22" viewBox="0 0 124 33" xmlns="http://www.w3.org/2000/svg">
+            <path d="M46.2 8.2h-8.4c-.6 0-1.1.4-1.2 1l-3.4 21.5c-.1.4.2.8.6.8h4c.6 0 1.1-.4 1.2-1l.9-5.8c.1-.6.6-1 1.2-1h2.7c5.5 0 8.7-2.7 9.5-7.9.4-2.3 0-4.1-1-5.4-1.2-1.3-3.2-2.2-6.1-2.2zm1 7.8c-.5 3-2.8 3-5 3h-1.3l.9-5.6c.1-.4.4-.6.7-.6h.6c1.5 0 3 0 3.7.9.5.5.6 1.3.4 2.3z" fill="#003087"/>
+            <path d="M72.8 15.9h-4c-.4 0-.7.2-.7.6l-.2 1-.3-.4c-.9-1.3-2.8-1.7-4.8-1.7-4.5 0-8.3 3.4-9 8.1-.4 2.4.2 4.6 1.5 6.2 1.2 1.4 3 2 5.1 2 3.6 0 5.6-2.3 5.6-2.3l-.2 1c-.1.4.2.8.6.8h3.6c.6 0 1.1-.4 1.2-1l2.1-13.5c.2-.4-.1-.8-.5-.8zm-5.6 7.8c-.4 2.3-2.2 3.8-4.5 3.8-1.2 0-2.1-.4-2.7-1.1-.6-.7-.8-1.8-.6-2.9.4-2.2 2.2-3.8 4.4-3.8 1.1 0 2 .4 2.7 1.1.7.8.9 1.8.7 2.9z" fill="#003087"/>
+            <path d="M96.7 15.9h-4.1c-.4 0-.8.2-1 .6l-5.7 8.4-2.4-8.1c-.2-.5-.6-.9-1.2-.9h-4c-.5 0-.8.4-.6.9l4.6 13.4-4.3 6.1c-.3.5 0 1.1.6 1.1h4.1c.4 0 .8-.2 1-.5l13.7-19.8c.3-.5 0-1.2-.7-1.2z" fill="#003087"/>
+            <path d="M109.7 8.2h-8.4c-.6 0-1.1.4-1.2 1l-3.4 21.5c-.1.4.2.8.6.8h4.3c.4 0 .8-.3.8-.7l1-6.1c.1-.6.6-1 1.2-1h2.7c5.5 0 8.7-2.7 9.5-7.9.4-2.3 0-4.1-1-5.4-1.1-1.3-3.2-2.2-6.1-2.2zm1 7.8c-.5 3-2.8 3-5 3h-1.3l.9-5.6c.1-.4.4-.6.7-.6h.6c1.5 0 3 0 3.7.9.5.5.6 1.3.4 2.3z" fill="#009cde"/>
+            <path d="M136.3 15.9h-4c-.4 0-.7.2-.7.6l-.2 1-.3-.4c-.9-1.3-2.8-1.7-4.8-1.7-4.5 0-8.3 3.4-9 8.1-.4 2.4.2 4.6 1.5 6.2 1.2 1.4 3 2 5.1 2 3.6 0 5.6-2.3 5.6-2.3l-.2 1c-.1.4.2.8.6.8h3.6c.6 0 1.1-.4 1.2-1l2.1-13.5c.2-.4-.1-.8-.5-.8zm-5.5 7.8c-.4 2.3-2.2 3.8-4.5 3.8-1.2 0-2.1-.4-2.7-1.1-.6-.7-.8-1.8-.6-2.9.4-2.2 2.2-3.8 4.4-3.8 1.1 0 2 .4 2.7 1.1.7.8.8 1.8.7 2.9z" fill="#009cde"/>
+            <path d="M15 4.3C13.5 2.6 10.8 2 7.4 2H.9C.3 2-.2 2.5-.3 3.1L-3.7 24.6c-.1.4.2.8.6.8h4.7l1.2-7.4-.1.4c.1-.6.6-1.1 1.2-1.1H6c5 0 8.9-2 10-7.9.1-.3.1-.6.1-.9-.1 0-.1 0 0 0 .4-2.5-.1-4.3-1.1-5.6z" fill="#003087"/>
+            <path d="M16.1 9.9c-.1 0-.1 0 0 0-.1-2.5-1.6-4.3-4.5-5.5-.3-.1-.7-.2-1.1-.3-.4-.1-.8-.1-1.2-.1H2.5c-.4 0-.7.2-.8.6l-2 13.1 2-.3 1.2-7.4c.1-.6.6-1.1 1.2-1.1h2.3c4.9 0 8.7-2 9.8-7.6-.1.3-.1.5-.1.6z" fill="#002f87"/>
+          </svg>
+        </div>
+        <!-- Visa -->
+        <div class="pay-logo">
+          <svg width="50" height="22" viewBox="0 0 750 471" xmlns="http://www.w3.org/2000/svg">
+            <rect width="750" height="471" rx="40" fill="#fff"/>
+            <path d="M278 334l41-250h66l-41 250h-66zm294-244c-13-5-33-10-59-10-65 0-110 32-110 79 0 34 33 53 58 65s34 19 34 30c0 16-20 23-39 23-26 0-40-4-62-13l-8-4-9 52c15 6 43 12 72 12 68 0 112-32 112-82 0-27-18-48-57-65-24-12-38-19-38-31 0-11 12-22 38-22 22 0 37 4 49 9l6 3 9-46zM641 84h-50c-16 0-27 4-34 20l-96 230h68l13-37h83l8 37h60L641 84zm-80 164l25-68 3-9 5 9 16 68h-49zM219 84l-64 170-7-34c-12-37-47-77-87-97l59 211h69l103-250h-73z" fill="#1a1f71"/>
+            <path d="M94 84H-1l-1 5c74 18 123 61 143 113l-20-100c-4-15-14-18-28-18z" fill="#f9a51a"/>
+          </svg>
+        </div>
+        <!-- Mastercard -->
+        <div class="pay-logo">
+          <svg width="40" height="26" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg">
+            <rect width="38" height="24" rx="3" fill="#fff"/>
+            <circle cx="15" cy="12" r="7" fill="#eb001b"/>
+            <circle cx="23" cy="12" r="7" fill="#f79e1b"/>
+            <path d="M19 6.8a7 7 0 0 1 0 10.4A7 7 0 0 1 19 6.8z" fill="#ff5f00"/>
+          </svg>
+        </div>
+        <span style="font-size:.78rem;color:var(--muted)">Cards &amp; PayPal accepted</span>
+      </div>
+      <div class="pay-note" id="pay-note-monthly" style="display:none">
+        <strong>Secure payment via Lava.top</strong><br>
+        Click the button below to pay securely with your card or PayPal. You will be redirected to our payment processor.
+      </div>
+      <div class="pay-note" id="pay-note-other">
+        <strong>Manual invoice</strong><br>
+        Submit your details and we will send you an invoice. Payment via bank transfer, crypto, or PayPal. Service activates within 24h of payment confirmation.
+      </div>
+      <label style="margin-top:1rem">Additional Notes (optional)</label>
+      <textarea id="fnotes" rows="2" placeholder="Any special requirements..."></textarea>
+      <button class="btn-pay" id="btn-pay-direct" style="display:none" onclick="payNow()">&#128274; Pay Now — Secure Checkout</button>
+      <button class="btn-submit" id="btn-submit-manual" onclick="submitOrder()">&#128233; Submit Order &amp; Get Invoice</button>
+      <div style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:.75rem">By proceeding you agree to our Terms of Service and Privacy Policy.</div>
+    </div>
+  </div>
+  <!-- RIGHT: SUMMARY -->
+  <div>
+    <h2>Order Summary</h2>
+    <div class="card">
+      <div class="summary-plan">
+        <div><div class="name" id="sum-name">Stellar Plus</div><div class="features" id="sum-features">Unlimited Sites &middot; Unmetered SSD</div></div>
+        <div class="price" id="sum-price">$25</div>
+      </div>
+      <div class="summary-line"><span>Plan</span><span id="sum-plan-label">Stellar Plus</span></div>
+      <div class="summary-line"><span>Billing</span><span id="sum-billing">Monthly</span></div>
+      <div class="summary-line"><span>Setup Fee</span><span style="color:var(--success)">FREE</span></div>
+      <div class="summary-total"><span>Total Due</span><span id="sum-total">$25.00</span></div>
+      <div style="margin-top:1rem" id="no-autocharge-badge"><span class="badge-green">&#10003; No auto-charge</span> <span style="font-size:.75rem;color:var(--muted);margin-left:.5rem">Manual billing</span></div>
+      <div class="trust-row">
+        <div class="trust-item">&#128274; Secure payment — card &amp; PayPal</div>
+        <div class="trust-item">&#9889; Activation within 24 hours</div>
+        <div class="trust-item">&#8617;&#65039; 30-day money-back guarantee</div>
+        <div class="trust-item">&#128172; 24/7 support via ticket</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- SUCCESS (manual orders only) -->
+<div id="success-screen">
+  <div class="check">&#9989;</div>
+  <h2>Order Submitted!</h2>
+  <p>Thanks, <strong id="success-name"></strong>! We have received your order.<br>
+  An invoice will be sent to <strong id="success-email"></strong> shortly.<br>
+  Your service will be activated once payment is confirmed.</p>
+  <a href="client.html">&rarr; Go to Client Area</a>
+</div>
+<script>
+const params = new URLSearchParams(location.search);
+const plan = params.get("plan") || "plus";
+const billing = params.get("billing") || "monthly";
+const planData = {
+  stellar:  { name:"Stellar",         features:"1 Site &middot; 20GB SSD &middot; 30 Mailboxes",            prices:{monthly:15, quarterly:40, biannual:70,  annual:120} },
+  plus:     { name:"Stellar Plus",    features:"Unlimited Sites &middot; Unmetered SSD &middot; Unlimited Mailboxes", prices:{monthly:25, quarterly:65, biannual:90,  annual:140} },
+  business: { name:"Stellar Business",features:"Unlimited Sites &middot; 50GB Cloud &middot; AutoBackup &middot; Imunify360", prices:{monthly:32, quarterly:67, biannual:100, annual:150} }
+};
+const billingLabels = { monthly:"Monthly (1 Month)", quarterly:"Quarterly (3 Months)", biannual:"6 Months", annual:"Annual (1 Year)" };
+const payLinks = {
+  monthly: {
+    stellar:  "https://app.lava.top/products/68d7c306-336a-4e57-8dce-f993ef396fb2/526acd4a-cb3f-4fbb-811c-9d2095a3f866?currency=USD",
+    plus:     "https://app.lava.top/products/68d7c306-336a-4e57-8dce-f993ef396fb2/1b9755cd-145d-4c56-b9ba-214424b24c2d?currency=USD",
+    business: "https://app.lava.top/products/68d7c306-336a-4e57-8dce-f993ef396fb2/fa0df8b2-da59-4a53-b045-c19895b37c67?currency=USD"
+  },
+  quarterly: {
+    stellar:  "https://app.lava.top/products/6c5a96fa-954e-4b5d-b58a-7eccd27e31e1/17fa5016-29b6-4b9b-9bbe-f80b3d20f5d4?currency=USD",
+    plus:     "https://app.lava.top/products/6c5a96fa-954e-4b5d-b58a-7eccd27e31e1/6bbfa736-45c0-44fc-a77d-2e2581636cca?currency=USD",
+    business: "https://app.lava.top/products/6c5a96fa-954e-4b5d-b58a-7eccd27e31e1/2377b96b-1352-4482-8360-067fbfa0521f?currency=USD"
+  },
+  biannual: {
+    stellar:  "https://app.lava.top/products/b90b8dfb-37ec-482c-af4f-49a4433596a0/0f3b2c59-77dc-4f12-a9bc-f8026bcbfca6?currency=USD",
+    plus:     "https://app.lava.top/products/b90b8dfb-37ec-482c-af4f-49a4433596a0/4755b4a0-0575-4b79-9505-1569e0bdee0c?currency=USD",
+    business: "https://app.lava.top/products/b90b8dfb-37ec-482c-af4f-49a4433596a0/42603be8-3b4d-4b17-8fe1-e25c665c8ebe?currency=USD"
+  },
+  annual: {
+    stellar:  "https://app.lava.top/products/f8b9f58c-8eb5-4484-8b5f-b13bfee58324/80fca096-58af-4a5b-8559-6e78f81d981b?currency=USD",
+    plus:     "https://app.lava.top/products/f8b9f58c-8eb5-4484-8b5f-b13bfee58324/061efaa2-4b81-4ab6-a6eb-89649a376a15?currency=USD",
+    business: "https://app.lava.top/products/f8b9f58c-8eb5-4484-8b5f-b13bfee58324/533b78cc-dd3d-4c73-a17f-23ab1dd7c831?currency=USD"
+  }
+};
+function init() {
+  const d = planData[plan] || planData.plus;
+  const price = d.prices[billing] || d.prices.monthly;
+  document.getElementById("sum-name").textContent = d.name;
+  document.getElementById("sum-features").innerHTML = d.features;
+  document.getElementById("sum-price").textContent = "$" + price;
+  document.getElementById("sum-plan-label").textContent = d.name;
+  document.getElementById("sum-billing").textContent = billingLabels[billing] || billing;
+  document.getElementById("sum-total").textContent = "$" + price + ".00";
+  const btnPay = document.getElementById("btn-pay-direct");
+  const btnManual = document.getElementById("btn-submit-manual");
+  const noteMonthly = document.getElementById("pay-note-monthly");
+  const noteOther = document.getElementById("pay-note-other");
+  const noAutocharge = document.getElementById("no-autocharge-badge");
+  btnPay.style.display = "block";
+  btnManual.style.display = "none";
+  noteMonthly.style.display = "block";
+  noteOther.style.display = "none";
+  noAutocharge.style.display = "none";
+}
+init();
+function saveInvoice(pm) {
+  const name = document.getElementById("fname").value.trim();
+  const email = document.getElementById("femail").value.trim();
+  if (!name || !email) { alert("Please fill in your name and email first."); return false; }
+  const d = planData[plan] || planData.plus;
+  const price = d.prices[billing] || d.prices.monthly;
+  const orders = JSON.parse(localStorage.getItem("gh_orders") || "[]");
+  const exists = orders.find(o => o.email === email && o.plan === d.name && o.status === "Pending Payment" && o.billing === (billingLabels[billing] || billing));
+  if (!exists) {
+    orders.push({
+      id: "INV-" + Date.now(), name, email,
+      plan: d.name, billing: billingLabels[billing] || billing,
+      amount: price, status: "Pending Payment",
+      date: new Date().toLocaleDateString(), pm: pm,
+      notes: document.getElementById("fnotes").value
+    });
+    localStorage.setItem("gh_orders", JSON.stringify(orders));
+  }
+  return true;
+}
+function payNow() {
+  if (!saveInvoice("card/paypal")) return;
+  const periodLinks = payLinks[billing] || payLinks.monthly;
+  const link = periodLinks[plan] || periodLinks.plus;
+  window.open(link, "_blank");
+}
+function submitOrder() {
+  const name = document.getElementById("fname").value.trim();
+  const email = document.getElementById("femail").value.trim();
+  if (!name || !email) { alert("Please fill in your name and email first."); return; }
+  if (!saveInvoice("manual")) return;
+  document.getElementById("success-name").textContent = name;
+  document.getElementById("success-email").textContent = email;
+  document.getElementById("checkout-screen").style.display = "none";
+  document.getElementById("success-screen").style.display = "block";
+}
+</script>
+</body>
+</html>

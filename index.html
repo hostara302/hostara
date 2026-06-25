@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CandyHosting — Web Hosting Plans</title>
+<style>
+:root{--primary:#ec4899;--primary-dark:#db2777;--primary-light:#f472b6;--accent:#fbbf24;--bg:#0f0a0f;--card:#1c1018;--border:#3b1f33;--text:#f5f0f5;--muted:#a080a0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;border-bottom:1px solid var(--border);background:rgba(15,10,15,.95);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);}
+.logo{font-size:1.35rem;font-weight:800;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:.5rem;}
+.logo em{color:var(--primary);font-style:normal;}
+.nav-links{display:flex;gap:1.75rem;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.btn-login{background:var(--primary);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-size:.85rem;font-weight:600;transition:background .2s;}
+.btn-login:hover{background:var(--primary-dark)!important;}
+.hero{text-align:center;padding:5rem 1rem 2.5rem;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(236,72,153,.18) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{display:inline-block;background:rgba(236,72,153,.15);border:1px solid rgba(236,72,153,.35);color:var(--primary-light);font-size:.75rem;font-weight:700;padding:.3rem .9rem;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.25rem;}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.1;margin-bottom:1rem;letter-spacing:-.03em;}
+.hero h1 em{color:var(--primary);font-style:normal;}
+.hero p{color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 2rem;line-height:1.65;}
+.secure-badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--card);border:1px solid var(--border);padding:.45rem 1.1rem;border-radius:999px;font-size:.8rem;color:var(--muted);}
+.billing-section{text-align:center;margin:2.5rem 0 1rem;}
+.billing-section p{font-size:.82rem;color:var(--muted);margin-bottom:.75rem;}
+.billing-toggle{display:inline-flex;gap:.3rem;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.3rem;}
+.toggle-btn{padding:.5rem 1.3rem;border-radius:999px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:.84rem;transition:all .2s;white-space:nowrap;}
+.toggle-btn.active{background:var(--primary);color:#fff;font-weight:700;}
+.save-tag{background:rgba(251,191,36,.15);color:var(--accent);font-size:.68rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;margin-left:.3rem;}
+.plans{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;padding:1rem 2rem 5rem;max-width:1150px;margin:0 auto;}
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 1.75rem;width:330px;position:relative;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.plan-card:hover{transform:translateY(-6px);border-color:var(--primary);box-shadow:0 0 30px rgba(236,72,153,.15);}
+.plan-card.popular{border-color:var(--primary);background:linear-gradient(160deg,#22101e 0%,#1c0a18 100%);}
+.popular-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:.68rem;font-weight:800;padding:.28rem .85rem;border-radius:999px;white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;}
+.plan-icon{font-size:2rem;margin-bottom:.75rem;}
+.plan-name{font-size:1.3rem;font-weight:800;margin-bottom:.4rem;}
+.plan-tagline{color:var(--muted);font-size:.82rem;margin-bottom:1.5rem;line-height:1.5;}
+.plan-price-wrap{display:flex;align-items:flex-end;gap:.2rem;margin-bottom:.3rem;}
+.plan-price{font-size:2.8rem;font-weight:900;letter-spacing:-.04em;line-height:1;}
+.plan-price-unit{font-size:.9rem;color:var(--muted);padding-bottom:.4rem;}
+.plan-billing{color:var(--muted);font-size:.78rem;margin-bottom:1.75rem;min-height:1.2em;}
+.saved{color:var(--accent);font-weight:600;}
+.features-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;margin-bottom:.6rem;margin-top:1rem;}
+.features-label:first-child{margin-top:0;}
+.plan-features{list-style:none;margin-bottom:.5rem;}
+.plan-features li{padding:.38rem 0;font-size:.85rem;color:#d0b8cc;display:flex;align-items:flex-start;gap:.55rem;line-height:1.4;}
+.plan-features li .check{color:var(--primary-light);font-size:.8rem;margin-top:.1rem;flex-shrink:0;}
+.divider{border:none;border-top:1px solid var(--border);margin:1rem 0;}
+.btn-plan{display:block;text-align:center;padding:.8rem;border-radius:10px;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none;transition:all .2s;border:none;width:100%;margin-top:1.5rem;}
+.btn-plan.primary{background:var(--primary);color:#fff;}
+.btn-plan.primary:hover{background:var(--primary-dark);}
+.btn-plan.outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+.btn-plan.outline:hover{border-color:var(--primary);color:var(--primary-light);}
+.trust-bar{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;padding:1.5rem 2rem 3rem;border-top:1px solid var(--border);}
+.trust-item{font-size:.82rem;color:var(--muted);}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:.8rem;}
+.footer-links{display:flex;justify-content:center;gap:1.75rem;margin-bottom:1rem;flex-wrap:wrap;}
+.footer-links a{color:var(--muted);text-decoration:none;}
+.footer-links a:hover{color:var(--text);}
+@media(max-width:720px){.hero h1{font-size:2rem}nav{padding:1rem 1.25rem}.plans{padding:1rem 1rem 3rem}.billing-toggle{flex-wrap:wrap;border-radius:14px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">🍬 Candy<em>Hosting</em></a>
+  <div class="nav-links">
+    <a href="client.html">Client Area</a>
+    <a href="login.html" class="btn-login">Sign In</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-tag">&#128640; Fast &middot; Reliable &middot; Affordable</div>
+  <h1>Web Hosting Built for<br><em>Real Performance</em></h1>
+  <p>Everything you need to launch your website &mdash; SSD storage, unlimited mailboxes, AI builders, and 24/7 support.</p>
+  <div class="secure-badge">&#128274; Secure checkout &middot; Cancel anytime &middot; 99.9% uptime SLA</div>
+</div>
+<div class="billing-section">
+  <p>Choose your billing period and save more</p>
+  <div class="billing-toggle">
+    <button class="toggle-btn active" onclick="setBilling('monthly',this)">1 Month</button>
+    <button class="toggle-btn" onclick="setBilling('quarterly',this)">3 Months <span class="save-tag">SAVE</span></button>
+    <button class="toggle-btn" onclick="setBilling('biannual',this)">6 Months <span class="save-tag">SAVE</span></button>
+    <button class="toggle-btn" onclick="setBilling('annual',this)">1 Year <span class="save-tag">BEST</span></button>
+  </div>
+</div>
+<div class="plans">
+  <div class="plan-card">
+    <div class="plan-icon">&#11088;</div>
+    <div class="plan-name">Stellar</div>
+    <div class="plan-tagline">Perfect for launching your first website with everything you need.</div>
+    <div class="plan-price-wrap"><div class="plan-price" id="price-stellar">$15</div><div class="plan-price-unit">/mo</div></div>
+    <div class="plan-billing" id="billing-stellar">Billed monthly</div>
+    <div class="features-label">What&#39;s included</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>1 Website</li>
+      <li><span class="check">&#10086;</span>20 GB SSD Storage</li>
+      <li><span class="check">&#10086;</span>30 Mailboxes</li>
+    </ul>
+    <hr class="divider">
+    <div class="features-label">Build with</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>AI for WordPress</li>
+      <li><span class="check">&#10086;</span>AI Website Builder</li>
+      <li><span class="check">&#10086;</span>Sitejet AI Builder</li>
+    </ul>
+    <a href="checkout.html?plan=stellar&billing=monthly" class="btn-plan outline">Get Stellar</a>
+  </div>
+  <div class="plan-card popular">
+    <div class="popular-badge">&#11088; Most Popular</div>
+    <div class="plan-icon">&#127775;</div>
+    <div class="plan-name">Stellar Plus</div>
+    <div class="plan-tagline">Grow without limits &mdash; unlimited websites and unmetered storage.</div>
+    <div class="plan-price-wrap"><div class="plan-price" id="price-plus">$25</div><div class="plan-price-unit">/mo</div></div>
+    <div class="plan-billing" id="billing-plus">Billed monthly</div>
+    <div class="features-label">What&#39;s included</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>Unlimited Websites</li>
+      <li><span class="check">&#10086;</span>Unmetered SSD Storage</li>
+      <li><span class="check">&#10086;</span>Unlimited Mailboxes</li>
+    </ul>
+    <hr class="divider">
+    <div class="features-label">Build with</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>AI for WordPress</li>
+      <li><span class="check">&#10086;</span>AI Website Builder</li>
+      <li><span class="check">&#10086;</span>Sitejet AI Builder</li>
+    </ul>
+    <a href="checkout.html?plan=plus&billing=monthly" class="btn-plan primary">Get Stellar Plus</a>
+  </div>
+  <div class="plan-card">
+    <div class="plan-icon">&#128188;</div>
+    <div class="plan-name">Stellar Business</div>
+    <div class="plan-tagline">Maximum power with cloud storage, security, and daily backups.</div>
+    <div class="plan-price-wrap"><div class="plan-price" id="price-business">$32</div><div class="plan-price-unit">/mo</div></div>
+    <div class="plan-billing" id="billing-business">Billed monthly</div>
+    <div class="features-label">What&#39;s included</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>Unlimited Websites</li>
+      <li><span class="check">&#10086;</span>50 GB Cloud Storage</li>
+      <li><span class="check">&#10086;</span>Unlimited Mailboxes</li>
+    </ul>
+    <hr class="divider">
+    <div class="features-label">Build with</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>AI for WordPress</li>
+      <li><span class="check">&#10086;</span>AI Website Builder</li>
+      <li><span class="check">&#10086;</span>Sitejet AI Builder</li>
+    </ul>
+    <hr class="divider">
+    <div class="features-label">Also included</div>
+    <ul class="plan-features">
+      <li><span class="check">&#10086;</span>AutoBackup</li>
+      <li><span class="check">&#10086;</span>Imunify360 Security</li>
+    </ul>
+    <a href="checkout.html?plan=business&billing=monthly" class="btn-plan outline">Get Stellar Business</a>
+  </div>
+</div>
+<div class="trust-bar">
+  <div class="trust-item">&#128274; Secure &amp; Encrypted</div>
+  <div class="trust-item">&#9889; Instant Activation</div>
+  <div class="trust-item">&#8617;&#65039; 30-Day Money Back</div>
+  <div class="trust-item">&#128172; 24/7 Support</div>
+  <div class="trust-item">&#127760; 99.9% Uptime SLA</div>
+</div>
+<footer>
+  <div class="footer-links">
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund.html">Refund Policy</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <p>&copy; 2026 CandyHosting &middot; Professional Web Hosting Services</p>
+</footer>
+<script>
+const prices={
+  monthly:{stellar:{price:"$15",billing:"Billed monthly"},plus:{price:"$25",billing:"Billed monthly"},business:{price:"$32",billing:"Billed monthly"}},
+  quarterly:{stellar:{price:"$40",billing:'Billed every 3 months &mdash; <span class="saved">save $5</span>'},plus:{price:"$65",billing:'Billed every 3 months &mdash; <span class="saved">save $10</span>'},business:{price:"$67",billing:'Billed every 3 months &mdash; <span class="saved">save $29</span>'}},
+  biannual:{stellar:{price:"$70",billing:'Billed every 6 months &mdash; <span class="saved">save $20</span>'},plus:{price:"$90",billing:'Billed every 6 months &mdash; <span class="saved">save $60</span>'},business:{price:"$100",billing:'Billed every 6 months &mdash; <span class="saved">save $92</span>'}},
+  annual:{stellar:{price:"$120",billing:'Billed annually &mdash; <span class="saved">save $60</span>'},plus:{price:"$140",billing:'Billed annually &mdash; <span class="saved">save $160</span>'},business:{price:"$150",billing:'Billed annually &mdash; <span class="saved">save $234</span>'}}
+};
+function setBilling(period,btn){
+  document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  const p=prices[period];
+  ["stellar","plus","business"].forEach(plan=>{
+    document.getElementById("price-"+plan).textContent=p[plan].price;
+    document.getElementById("billing-"+plan).innerHTML=p[plan].billing;
+  });
+  document.querySelectorAll("[href*=checkout]").forEach(a=>{
+    const planParam=new URL(a.href,location.href).searchParams.get("plan");
+    a.href="checkout.html?plan="+planParam+"&billing="+period;
+  });
+}
+</script>
+</body>
+</html>
